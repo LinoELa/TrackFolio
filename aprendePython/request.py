@@ -2,10 +2,37 @@ import requests
 
 
 # Realizar peticionn HTTP 
-response = requests.get("https://pypi.org/")
+respuesta = requests.get("https://pypi.org/")
 
-type(response)
-print(response.text)
+# print(type(response))
+# print(response.text)
+
+
+#Algo que es realmente importante en una petición HTTP es comprobar
+# el estado de la misma. Por regla general, si todo ha ido bien, 
+#deberíamos obtener un código 200, pero existen muchos otros códigos de estado 
+#de respuesta HTTP:
+
+print(respuesta.status_code)
+
+#para avitar un acomparacion directa con 200 se puede usar 
+print(respuesta)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
