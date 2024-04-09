@@ -1,23 +1,45 @@
 import requests
 
 
-# Realizar peticionn HTTP 
-respuesta = requests.get("https://pypi.org/")
 
-# print(type(response))
-# print(response.text)
+#TIPOS DE PETICIONES 
+
+# Método HTTP  Llamada
+# GET    -- requests.get()
+
+# POST   -- requests.post()
+
+# PUT    -- requests.put()
+
+# DELETE -- requests.delete()
+
+# HEAD  -- requests.head()
+
+# OPTIONS -- requests.options()
 
 
-#Algo que es realmente importante en una petición HTTP es comprobar
-# el estado de la misma. Por regla general, si todo ha ido bien, 
-#deberíamos obtener un código 200, pero existen muchos otros códigos de estado 
-#de respuesta HTTP:
+
+#USANDO PARAMETROS PARA HACER PETICIONES 
+
+#Query string => Veamos un ejemplo sencillo. --> Supongamos que queremos 
+#buscar paquetes de Python que contengan la palabra «astro»:
+
+# parametro_string = {'q': 'astro'}
+
+# respuesta = requests.get('https://pypi.org', params=parametro_string)
+
+# print(respuesta.url)
+
+#PARAMETRO POST
+#acceder a un log in
+direccion_url = 'https://giphy.com/login'
+my_informacion_login = {'email': 'sdelquin@gmail.com', 'password':'1234'}
+
+respuesta = requests.post(direccion_url, data=my_informacion_login)
 
 print(respuesta.status_code)
 
-#para avitar un acomparacion directa con 200 se puede usar 
-print(respuesta)
-
+# print(respuesta)
 
 
 
