@@ -24,6 +24,7 @@ contenido = """
     </div>
     <div class="block">
       <h2>Formulario</h2>
+      <h2>Formulario secundario</h2>
       <form action="" method="post">
         <label for="POST-name">Nombre:</label>
         <input id="POST-name" type="text" name="name">
@@ -43,4 +44,38 @@ contenido = """
 
 sopa = BeautifulSoup(contenido, features='html.parser')
 
-print(sopa)
+# FORMULAS DE LOCALIZACION ==> a href... 
+
+#Localizar todos los enlaces:
+etiqueta_link = sopa.find_all('a')
+# print(etiqueta_link)
+
+#Localizar todos os elementos con cclase inline
+
+elemento_clase = sopa.find_all(class_= 'inline')
+# print(elemento_clase)
+
+#localizar los divs con lase footer 
+elemento_div = sopa.find_all('div', class_='footer')
+# print(elemento_div)
+
+#localizar todos lo h2 que tengan el texto 'formulario'
+elemento_h2 = sopa.find_all('h2', string='Formulario')
+# print(elemento_h2)
+
+#localizar todos los elementos cuyo atributo type tenga el valos text:
+elemento_valor_text = sopa.find_all(type='text')
+# print(elemento_valor_text)
+
+
+#localizar los imputs  y todos lo span
+elemento_input_span = sopa.find_all(['input', '\n', 'span'])
+# print(elemento_input_span)
+
+#localizar todos los parafos que estan dentro del pie de pagina (Usanso 'selectores CSS')
+elemento_input_selectores = sopa.select('.footer p')
+# print(elemento_input_selectores)
+
+
+
+
