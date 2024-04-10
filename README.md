@@ -43,6 +43,11 @@ string
 
 Una cadena de texto con el contenido del elemento, siempre que contenga un único elemento textual
 
+Además de localizar elementos, este paquete permite moverse por los elementos del DOM de manera muy sencilla.
+
+## Moverse hacia abajo
+Para ir profundizando en el DOM podemos utilizar los nombres de los «tags» como atributos del objeto, teniendo en cuenta que si existen múltiples elementos sólo se accederá al primero de ellos:
+
 
 
 

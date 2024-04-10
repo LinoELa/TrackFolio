@@ -44,57 +44,53 @@ contenido = """
 
 sopa = BeautifulSoup(contenido, features='html.parser')
 
-#ACCEDER AL CONTENIDO
+#MOSTRAR ELEMENTOS 
 
-#Nombre de etiqueta --> Ver el nomrbe de la etiqueta
-nombre = sopa.name
-# print(nombre)
+datos = sopa.find(id='data')
 
-elem = sopa.find('ul', id='data')
-# print(elem.name)
+# print(datos)
 
-elem = sopa.find('h1')
-# print(elem.name)
+#Mostrar el contenido de forma : BELLA HERMOSA
 
-
-#ACCESO A ATRIBUTOS
-
-elem = sopa.find('input', id='POST-name')
-# print(elem)
-
-name_elem = elem['id']
-# print(name_elem)
-
-name_elem = elem['name']
-# print(name_elem)
-
-name_elem = elem['type']
-# print(name_elem)
-
-#Acceder a los diccionarios completos de atributos 
-elem_dict = elem.attrs
-print(elem_dict)
-
-#contenido textual 
-
-footer = sopa.find(class_='footer')
-# print(footer)
-
-footer_text = footer.text
-# print(footer_text) #Imprime solo el texto 
-
-footer_list = list(footer.strings)
-# print(footer_list) #imprime solo la lista 
+belleza_data = datos.prettify()
+# print(belleza_data)
 
 
-footer_list = list(footer.stripped_strings)
-# print(footer_list) #imprime solo la lista 
+#NAVEGAR POR EL DOM
+# Además de localizar elementos, este paquete permite moverse por los elementos del DOM de manera muy sencilla.
 
-footer_list = footer.span.string
-print(footer_list)
 
-footer_list = footer.string
-# print(footer_list)
+# Moverse hacer ABAJO
+moverse_abajo = sopa.div.p
+# print(moverse_abajo)
+
+moverse_abajo_form = sopa.form.label
+# print(moverse_abajo_form)
+
+moverse_abajo_tipo = type(sopa.span)
+# print(moverse_abajo_tipo)
+
+#Obtener los doccumentos como lista
+moverse_abajo_elemento_lista = sopa.form.contents
+# print(moverse_abajo_elemento_lista)
+# print('tipo de elemento-tag : ', type(moverse_abajo_elemento_lista))
+
+
+# Moverse hacer ARRIBA
+
+# Para acceder al elemento superior de otro dado, podemos usar el atributo parent:
+li = sopa.find('li', 'blue')
+# print(li.parent)
+
+# También podemos acceder a todos los elementos superiores (ascendientes) usando el generador parents:
+
+for elem in li.parents:
+    print(elem.name)
+
+
+
+
+
 
 
 
