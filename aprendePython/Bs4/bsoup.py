@@ -44,37 +44,86 @@ contenido = """
 
 sopa = BeautifulSoup(contenido, features='html.parser')
 
-# FORMULAS DE LOCALIZACION ==> a href... 
+# LOCALIZAR UNICO ELEMENTO
 
-#Localizar todos los enlaces:
-etiqueta_link = sopa.find_all('a')
-# print(etiqueta_link)
+#elemento que no existe
 
-#Localizar todos os elementos con cclase inline
-
-elemento_clase = sopa.find_all(class_= 'inline')
-# print(elemento_clase)
-
-#localizar los divs con lase footer 
-elemento_div = sopa.find_all('div', class_='footer')
-# print(elemento_div)
-
-#localizar todos lo h2 que tengan el texto 'formulario'
-elemento_h2 = sopa.find_all('h2', string='Formulario')
-# print(elemento_h2)
-
-#localizar todos los elementos cuyo atributo type tenga el valos text:
-elemento_valor_text = sopa.find_all(type='text')
-# print(elemento_valor_text)
+elemento_unico_form = sopa.find('form')
+# print(elemento_unico_form)
 
 
-#localizar los imputs  y todos lo span
-elemento_input_span = sopa.find_all(['input', '\n', 'span'])
-# print(elemento_input_span)
+#elemento que existe
+elemento_unico_no_existe = sopa.find('strange-tag')
+# print(elemento_unico_no_existe)
 
-#localizar todos los parafos que estan dentro del pie de pagina (Usanso 'selectores CSS')
-elemento_input_selectores = sopa.select('.footer p')
-# print(elemento_input_selectores)
+
+#Multiples 'li'. Solo devuelve el primero
+elemento_unico_li = sopa.find('li')
+# print(elemento_unico_li)
+
+
+#LOCALIZAR DESDE ELEMENTO
+elemento_desde_un_bloque = sopa.find_all('div', 'block') [1]
+# print(elemento_desde_un_bloque)
+
+elemento_desde_un_bloque_2 = sopa.find_all('h2')
+# print(elemento_desde_un_bloque_2)
+
+#OTRAS FUNCIONES 
+
+#Localizar los <<div>> o elemetos "superiores" apartir de un elemento concreto de su clase.
+
+gold = sopa.find('li', 'gold')
+# print(gold)
+
+gold_parent = gold.find_parents('div')
+# print(gold_parent)
+
+#Localizar elementos hermanos siguientes
+blue_li = sopa.find('li' , 'blue') #localizar elemento
+# print(blue_li)
+
+blue_li_parents = blue_li.find_next_sibling() #localizar elemento siguiente
+# print(blue_li_parents)
+
+
+
+#localizar todos los elementos acontinuacion de uno dado:
+
+elemento_a_continuacion = sopa.find('input', type='submit')
+# print(elemento_a_continuacion)
+
+elemento_a_continuacion_submit = elemento_a_continuacion.find_all_next()
+# print(elemento_a_continuacion_submit)
+
+
+#localizar todos los elementos previos a uno dado.
+ul_data = sopa.find('ul', id='data')
+# print(ul_data)
+
+ul_data_previo = ul_data.find_all_previous(['h1', 'h2'])
+# print(ul_data_previo)
+
+ul_data_previo_parents = ul_data.find_parents(['h1, h2'])
+# print(ul_data_previo_parents)
+
+
+#ATAOS DE BUSQUEDAS 
+busqueda = sopa.find_all('span')
+# print(busqueda)
+
+atajo_busqueda = sopa('span')
+print(atajo_busqueda)
+
+
+
+
+
+
+
+
+
+
 
 
 

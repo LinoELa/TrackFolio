@@ -1,4 +1,5 @@
 # TrackFolio
+https://aprendepython.es/pypi/scraping/beautifulsoup/
 ## BS4
 
 <!-- Parte 1  -->
@@ -13,6 +14,12 @@ from bs4 import BeautifulSoup
 ImportError: cannot import name 'BeautifulSoup' from partially initialized module 'bs4' (most likely due to a circular import) (/Users/ela/Desktop/DEVELOPER/TrackFolio/aprendePython/Bs4/bs4.py)
 
 "
+
+
+Hasta ahora hemos visto las funciones find_all() y select() que localizan un conjunto de elementos. Incluso en el caso de encontrar sólo un elemento, se devuelve una lista con ese único elemento.
+
+Se podría decir que la función find_all() busca en descendientes y que la función find_parents() busca en ascendientes.
+
 
 
 
