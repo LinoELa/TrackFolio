@@ -44,76 +44,65 @@ contenido = """
 
 sopa = BeautifulSoup(contenido, features='html.parser')
 
-# LOCALIZAR UNICO ELEMENTO
+#ACCEDER AL CONTENIDO
 
-#elemento que no existe
+#Nombre de etiqueta --> Ver el nomrbe de la etiqueta
+nombre = sopa.name
+# print(nombre)
 
-elemento_unico_form = sopa.find('form')
-# print(elemento_unico_form)
+elem = sopa.find('ul', id='data')
+# print(elem.name)
 
-
-#elemento que existe
-elemento_unico_no_existe = sopa.find('strange-tag')
-# print(elemento_unico_no_existe)
-
-
-#Multiples 'li'. Solo devuelve el primero
-elemento_unico_li = sopa.find('li')
-# print(elemento_unico_li)
+elem = sopa.find('h1')
+# print(elem.name)
 
 
-#LOCALIZAR DESDE ELEMENTO
-elemento_desde_un_bloque = sopa.find_all('div', 'block') [1]
-# print(elemento_desde_un_bloque)
+#ACCESO A ATRIBUTOS
 
-elemento_desde_un_bloque_2 = sopa.find_all('h2')
-# print(elemento_desde_un_bloque_2)
+elem = sopa.find('input', id='POST-name')
+# print(elem)
 
-#OTRAS FUNCIONES 
+name_elem = elem['id']
+# print(name_elem)
 
-#Localizar los <<div>> o elemetos "superiores" apartir de un elemento concreto de su clase.
+name_elem = elem['name']
+# print(name_elem)
 
-gold = sopa.find('li', 'gold')
-# print(gold)
+name_elem = elem['type']
+# print(name_elem)
 
-gold_parent = gold.find_parents('div')
-# print(gold_parent)
+#Acceder a los diccionarios completos de atributos 
+elem_dict = elem.attrs
+print(elem_dict)
 
-#Localizar elementos hermanos siguientes
-blue_li = sopa.find('li' , 'blue') #localizar elemento
-# print(blue_li)
+#contenido textual 
 
-blue_li_parents = blue_li.find_next_sibling() #localizar elemento siguiente
-# print(blue_li_parents)
+footer = sopa.find(class_='footer')
+# print(footer)
 
+footer_text = footer.text
+# print(footer_text) #Imprime solo el texto 
 
-
-#localizar todos los elementos acontinuacion de uno dado:
-
-elemento_a_continuacion = sopa.find('input', type='submit')
-# print(elemento_a_continuacion)
-
-elemento_a_continuacion_submit = elemento_a_continuacion.find_all_next()
-# print(elemento_a_continuacion_submit)
+footer_list = list(footer.strings)
+# print(footer_list) #imprime solo la lista 
 
 
-#localizar todos los elementos previos a uno dado.
-ul_data = sopa.find('ul', id='data')
-# print(ul_data)
+footer_list = list(footer.stripped_strings)
+# print(footer_list) #imprime solo la lista 
 
-ul_data_previo = ul_data.find_all_previous(['h1', 'h2'])
-# print(ul_data_previo)
+footer_list = footer.span.string
+print(footer_list)
 
-ul_data_previo_parents = ul_data.find_parents(['h1, h2'])
-# print(ul_data_previo_parents)
+footer_list = footer.string
+# print(footer_list)
 
 
-#ATAOS DE BUSQUEDAS 
-busqueda = sopa.find_all('span')
-# print(busqueda)
 
-atajo_busqueda = sopa('span')
-print(atajo_busqueda)
+
+
+
+
+
 
 
 
